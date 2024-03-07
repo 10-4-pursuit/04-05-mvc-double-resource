@@ -1,38 +1,47 @@
-let todos = [];
+const { faker } = require("@faker-js/faker");
 
-/**
- * Finds and returns all todo items.
- * @returns {Array} An array of all todo items.
- */
-const findAll = () => {};
+//faker.string.uuid()
+//faker.internet.email()
 
-/**
- * Finds a todo item by its ID.
- * @param {number|string} id The ID of the todo item to find.
- * @returns {Object|null} The found todo item or null if not found.
- */
-const findById = (id) => {};
+let todos = [
+  {
+    id: "347d150c-f170-4ba2-9fad-8eb80636890f",
+    title: "free hugs",
+    completed: true,
+    userId: "Irwin14@yahoo.com",
+  },
+];
 
-/**
- * Adds a new todo item.
- * @param {Object} todo The todo item to add. Must contain `title` and `completed` properties.
- * @returns {Object} The added todo item, including its generated ID.
- */
-const add = (todo) => {};
+//finds all the items in the array
+const findAll = (todos) => {
+  return todos;
+};
 
-/**
- * Updates a todo item by its ID.
- * @param {number|string} id The ID of the todo item to update.
- * @param {Object} updateInfo An object containing the todo item properties to update.
- * @returns {Object|null} The updated todo item or null if not found.
- */
+//find item by add
+const findById = (id) => {
+  return todos.find((todo) => todo.id === id);
+};
+
+//create a new item
+const add = (todos) => {
+  const newId = faker.string.uuid();
+  const newTitle = faker.lorem.words(3);
+  const newUserId = faker.internet.email();
+
+  const newTodo = {
+    id: newId,
+    title: newTitle,
+    completed: false,
+    userId: newUserId,
+  };
+
+  todos.push(newTodo);
+
+  return newTodo;
+};
+
 const updateById = (id, updateInfo) => {};
 
-/**
- * Deletes a todo item by its ID.
- * @param {number|string} id The ID of the todo item to delete.
- * @returns {Object|null} The deleted todo item or null if not found.
- */
 const deleteById = (id) => {};
 
 module.exports = { findAll, findById, add, updateById, deleteById };
