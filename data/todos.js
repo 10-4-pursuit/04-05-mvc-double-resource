@@ -40,8 +40,38 @@ const add = (todos) => {
   return newTodo;
 };
 
-const updateById = (id, updateInfo) => {};
+const updateById = (id, updateInfo) => {
+  const found = todos.some((todo) => todo.id === id);
+  if (found) {
+    todos.title = updateInfo.title;
+    console.log("item has been updated");
+    return todos;
+  } else {
+    console.log("item not found");
+    return todos;
+  }
+};
 
-const deleteById = (id) => {};
+const updateInfo = {
+  title: "A Whole New World!",
+};
+
+
+
+const deleteById = (id) => {
+    const found = todos.some((todo) => todo.id === id);
+
+    if (found) {
+        todos.filter((todo) => todo.id === id)
+        console.log("item has been deleted");
+        return todos;
+      } else {
+        console.log("item not found. No action taken");
+        return todos;
+      }
+    };
+
+
+console.log(deleteById('347d150c-f170-4ba2-9fad-8eb80636890f'))
 
 module.exports = { findAll, findById, add, updateById, deleteById };
