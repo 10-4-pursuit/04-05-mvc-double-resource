@@ -74,4 +74,4 @@ const deleteById = (id) => {
 
 console.log(deleteById('347d150c-f170-4ba2-9fad-8eb80636890f'))
 
-module.exports = { findAll, findById, add, updateById, deleteById };
+module.exports = { findAll, findById, add, updateById, deleteById, todos };
