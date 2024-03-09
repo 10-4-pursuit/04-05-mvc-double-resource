@@ -5,6 +5,7 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/',  listToDos );
+router.post('/', validateToDo, createToDo);
 
 
 module.exports=router

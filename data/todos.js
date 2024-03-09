@@ -23,14 +23,14 @@ const findById = (id) => {
 };
 
 //create a new item
-const add = (todos) => {
+const add = (title) => {
   const newId = faker.string.uuid();
-  const newTitle = faker.lorem.words(3);
+  // const newTitle = faker.lorem.words(3);
   const newUserId = faker.internet.email();
 
   const newTodo = {
     id: newId,
-    title: newTitle,
+    title,
     completed: false,
     userId: newUserId,
   };
@@ -39,6 +39,8 @@ const add = (todos) => {
 
   return newTodo;
 };
+
+console.log(add("do yoga"))
 
 const updateById = (id, updateInfo) => {
   const found = todos.some((todo) => todo.id === id);
@@ -72,6 +74,6 @@ const deleteById = (id) => {
     };
 
 
-console.log(deleteById('347d150c-f170-4ba2-9fad-8eb80636890f'))
+
 
 module.exports = { findAll, findById, add, updateById, deleteById, todos };

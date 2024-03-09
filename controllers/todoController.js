@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const todoController = express();
-const { findAll, findById, add, updateById, deleteById, todos } = require('../data/todos')
-
+// const { findAll, findById, add, updateById, deleteById, todos } = require('../data/todos')
+const todos = require('../data/todos')
 
 
 // function to see all the todo items
 const listToDos = (req, res) => {
-  return res.json(todos);
+  res.json(todos.todos);
 };
 
 //function to validate a new to do item
 function validateToDo(req, res, next) {
+
   const { title } = req.body;
 
   //validate input
@@ -22,20 +23,13 @@ function validateToDo(req, res, next) {
 }
 
 //function to create a new to do item
-function createToDo(req, res) {
+function createToDo( req, res) {
+   
   const { title } = req.body;
 
-  const newToDo = {
-    id: Date.now(),
-    title,
-    completed: false,
-  };
+  todos.add(title)
 
-  // Add the new todo to the list
-  todos.push(newToDo);
-
-  // Send the created todo back in the response
-  res.status(200).json(newToDo);
+  res.status(200).json({message: 'new item added successfully'});
 }
 
 function updateToDo(req, res) {
