@@ -40,12 +40,15 @@ const add = (title) => {
   return newTodo;
 };
 
-console.log(add("do yoga"))
+
+
+
 
 const updateById = (id, updateInfo) => {
-  const found = todos.some((todo) => todo.id === id);
-  if (found) {
-    todos.title = updateInfo.title;
+  const found = todos.findIndex((todo) => todo.id === id);
+ 
+  if (found !== -1) {
+    todos[found].title = updateInfo;
     console.log("item has been updated");
     return todos;
   } else {
@@ -54,9 +57,7 @@ const updateById = (id, updateInfo) => {
   }
 };
 
-const updateInfo = {
-  title: "A Whole New World!",
-};
+
 
 
 
