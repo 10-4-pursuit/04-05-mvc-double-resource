@@ -1,8 +1,5 @@
 const { faker } = require("@faker-js/faker");
 
-//faker.string.uuid()
-//faker.internet.email()
-
 const todos = [
   {
     id: 1,
@@ -10,8 +7,8 @@ const todos = [
     completed: true,
     userId: 1,
   }
-]
-;
+];
+
 
 //finds all the items in the array
 const findAll = (todos) => {
@@ -63,7 +60,7 @@ const updateById = (id, updateInfo) => {
 
 
 const deleteById = (id) => {
-    const found = todos.some((todo) => todo.id === id);
+    const found = todos.some((todo) => todo.id === parseInt(id));
 
     if (found) {
         todos.filter((todo) => todo.id === id)
