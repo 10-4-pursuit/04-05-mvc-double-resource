@@ -1,6 +1,4 @@
-const express = require("express");
-const router = express.Router();
-const todoController = express();
+
 const { findAll, findById, add, updateById, deleteById} = require('../data/todos')
 const { todos } = require('../data/todos')
 
