@@ -1,38 +1,62 @@
-let users = [];
+let users = [
+  {
+    id: 1,
+    name: "user01",
+    email: "user01@email.com",
+  },
+];
 
-/**
- * Finds and returns all user items.
- * @returns {Array} An array of all user items.
- */
-const findAll = () => {};
+const findAll = () => {
+  return users;
+};
 
-/**
- * Finds a user item by its ID.
- * @param {number|string} id The ID of the user item to find.
- * @returns {Object|null} The found user item or null if not found.
- */
-const findById = (id) => {};
+const findById = (id) => {
+  return users.find((user) => user.id === id);
+};
 
-/**
- * Adds a new user item.
- * @param {Object} user The user item to add. Must contain `name` and `email` properties.
- * @returns {Object} The added user item, including its generated ID.
- */
-const add = (user) => {};
+const add = (name, email) => {
+  const newId = users.length + 1;
 
-/**
- * Updates a user item by its ID.
- * @param {number|string} id The ID of the user item to update.
- * @param {Object} updateInfo An object containing the user item properties to update.
- * @returns {Object|null} The updated user item or null if not found.
- */
-const updateById = (id, updateInfo) => {};
+  const newUser = {
+    id: newId,
+    name,
+    email,
+  };
 
-/**
- * Deletes a user item by its ID.
- * @param {number|string} id The ID of the user item to delete.
- * @returns {Object|null} The deleted user item or null if not found.
- */
-const deleteById = (id) => {};
+  users.push(newUser);
+  console.log("New user has been added");
+  return newUser;
+};
 
-module.exports = { findAll, findById, add, updateById, deleteById };
+const updateById = (id, updateInfo) => {
+  const found = users.findIndex((user) => user.id === parseInt(id));
+
+  if (found !== -1) {
+    users[found].name = updateInfo.name;
+    users[found].email = updateInfo.email;
+    console.log("user has been updated");
+    return users[found];
+  } else {
+    console.log("user not found");
+    return users;
+  }
+};
+
+// const updateInfo = {
+//     name: "Salvador Dali!",
+//   };
+
+const deleteById = (id) => {
+  const found = users.findIndex((user) => user.id === id);
+
+  if (found !== -1) {
+    users.splice(found, 1);
+    console.log("user has been deleted");
+    return users;
+  } else {
+    console.log("user not found. No action taken");
+    return users;
+  }
+};
+
+module.exports = { findAll, findById, add, updateById, deleteById, users };
