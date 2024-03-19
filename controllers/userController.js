@@ -56,7 +56,7 @@ function deleteUser(req, res) {
   const { id } = req.params;
   const deletedInfo = deleteById(id);
 
-  res.status(200).send({ message: "Todo successfully deleted", deletedInfo });
+  res.status(200).send({ message: "User successfully deleted" });
 }
 
 module.exports = {
