@@ -34,16 +34,20 @@ const add = (name, email) => {
 
 
 const updateById = (id, updateInfo) => {
-  const found = users.some((user) => user.id === id);
-  if (found) {
-    users.name = updateInfo.name;
+  const found = users.findIndex((user) => user.id === parseInt(id));
+
+  if (found !== -1) {
+    users[found].name = updateInfo.name;
+    users[found].email = updateInfo.email;
     console.log("user has been updated");
-    return users;
+    return users[found];
   } else {
     console.log("user not found");
     return users;
   }
 };
+
+
 
 // const updateInfo = {
 //     name: "Salvador Dali!",

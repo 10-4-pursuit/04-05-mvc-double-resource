@@ -43,5 +43,12 @@ function createUser( req, res) {
     res.status(201).send(freshUser);
   }
 
+function updateUser(req, res) {
+    const { id } = req.params;
+    const updatedInfo = updateById(id, req.body)
 
-  module.exports = {listUsers, showUser, validateUser, createUser}
+    res.status(200).send(updatedInfo);
+}
+
+
+  module.exports = {listUsers, showUser, validateUser, createUser, updateUser}

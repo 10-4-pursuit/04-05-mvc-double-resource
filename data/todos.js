@@ -38,13 +38,9 @@ const add = (title, completed, userId) => {
   return newTodo;
 };
 
-
-
-
-
 const updateById = (id, updateInfo) => {
   const found = todos.findIndex((todo) => todo.id === parseInt(id));
- 
+
   if (found !== -1) {
     todos[found].title = updateInfo.title;
     todos[found].completed = updateInfo.completed;
