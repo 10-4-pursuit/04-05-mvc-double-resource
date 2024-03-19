@@ -3,14 +3,15 @@ const { faker } = require("@faker-js/faker");
 //faker.string.uuid()
 //faker.internet.email()
 
-let todos = [
+const todos = [
   {
-    id: "347d150c-f170-4ba2-9fad-8eb80636890f",
+    id: 1,
     title: "free hugs",
     completed: true,
-    userId: "Irwin14@yahoo.com",
-  },
-];
+    userId: 1,
+  }
+]
+;
 
 //finds all the items in the array
 const findAll = (todos) => {
@@ -23,16 +24,16 @@ const findById = (id) => {
 };
 
 //create a new item
-const add = (title) => {
-  const newId = faker.string.uuid();
+const add = (title, completed, userId) => {
+  const newId = todos.length + 1;
   // const newTitle = faker.lorem.words(3);
-  const newUserId = faker.internet.email();
+  const newUserId = Date.now();
 
   const newTodo = {
     id: newId,
     title,
-    completed: false,
-    userId: newUserId,
+    completed,
+    userId
   };
 
   todos.push(newTodo);
@@ -45,19 +46,19 @@ const add = (title) => {
 
 
 const updateById = (id, updateInfo) => {
-  const found = todos.findIndex((todo) => todo.id === id);
+  const found = todos.findIndex((todo) => todo.id === parseInt(id));
  
   if (found !== -1) {
-    todos[found].title = updateInfo;
+    todos[found].title = updateInfo.title;
+    todos[found].completed = updateInfo.completed;
+    todos[found].userId = updateInfo.userId;
     console.log("item has been updated");
-    return todos;
+    return todos[found];
   } else {
     console.log("item not found");
     return todos;
   }
 };
-
-
 
 
 

@@ -15,12 +15,9 @@ let users = [
 
 
 
-const findAll = (users) => {
+const findAll = () => {
     return users
 };
-
-
-
 
 const findById = (id) => {
     return users.find((user) => user.id === id);
@@ -46,7 +43,6 @@ const add = (user) => {
 };
 
 
-
 const updateById = (id, updateInfo) => {
     const found = users.some((user) => user.id === id);
     if (found) {
@@ -60,9 +56,9 @@ const updateById = (id, updateInfo) => {
 
 };
 
-const updateInfo = {
-    name: "Salvador Dali!",
-  };
+// const updateInfo = {
+//     name: "Salvador Dali!",
+//   };
 
 
 
@@ -82,4 +78,4 @@ const deleteById = (id) => {
 
 console.log(deleteById('envisioneer'))
 
-module.exports = { findAll, findById, add, updateById, deleteById };
+module.exports = { findAll, findById, add, updateById, deleteById, users };

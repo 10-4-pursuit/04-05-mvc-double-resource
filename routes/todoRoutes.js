@@ -4,11 +4,11 @@ const router = express.Router();
 
 router.use(express.json());
 
-
 router.get('/',  listToDos );
 router.get('/:id',  showTodo );
 router.post('/', validateToDo, createToDo);
-router.put('/:id', updateToDo, );
+router.put('/:id', updateToDo );
+router.delete('/:id', deleteToDo );
 
 
 module.exports=router

@@ -5,6 +5,7 @@ const app = express()
 
 app.use(express.json())
 app.use("/todos", toDoroutes);
+// app.use("/user", toDoroutes);
 
 app.get('/', (req, res) => {
     res.send("save the world!")
