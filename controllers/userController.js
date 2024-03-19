@@ -1,54 +1,69 @@
-
-const { findAll, findById, add, updateById, deleteById } = require('../data/users')
-const { users } = require('../data/users')
+const {
+  findAll,
+  findById,
+  add,
+  updateById,
+  deleteById,
+} = require("../data/users");
+const { users } = require("../data/users");
 
 // function to see all the user items
 const listUsers = (req, res) => {
-    res.send(findAll());
-  };
+  res.send(findAll());
+};
 
-  //function to find user by id
+//function to find user by id
 const showUser = (req, res) => {
-    const { id } = req.params
-    console.log(id)
-  
-    const foundUser = users.findById(id)
-     res.json(foundUser)
-  }
+  const { id } = req.params;
+  console.log(id);
 
+  const foundUser = users.findById(id);
+  res.json(foundUser);
+};
 
-  //function to validate a new to do item
+//function to validate a new to do item
 function validateUser(req, res, next) {
+  const { name } = req.body;
 
-    const { name } = req.body;
-  
-    //validate input
-    if ( !name ) {
-      return res.status(400).json({ message: "Missing required field: name" });
-    }
-    next();
+  //validate input
+  if (!name) {
+    return res.status(400).json({ message: "Missing required field: name" });
   }
-
-  //function to create a new to do item
-function createUser( req, res) {
-   
-    const { name, email } = req.body;
-
-    if ( !email ) {
-        return res.status(400).json({ message: "Missing required field: email" });
-      }
-  
-    const freshUser = add(name, email)
-  
-    res.status(201).send(freshUser);
-  }
-
-function updateUser(req, res) {
-    const { id } = req.params;
-    const updatedInfo = updateById(id, req.body)
-
-    res.status(200).send(updatedInfo);
+  next();
 }
 
+//function to create a new to do item
+function createUser(req, res) {
+  const { name, email } = req.body;
 
-  module.exports = {listUsers, showUser, validateUser, createUser, updateUser}
+  if (!email) {
+    return res.status(400).json({ message: "Missing required field: email" });
+  }
+
+  const freshUser = add(name, email);
+
+  res.status(201).send(freshUser);
+}
+
+function updateUser(req, res) {
+  const { id } = req.params;
+  const updatedInfo = updateById(id, req.body);
+
+  res.status(200).send(updatedInfo);
+}
+
+function deleteUser(req, res) {
+  const { id } = req.params;
+  const deletedInfo = deleteById(id);
+
+  res.status(200).send({ message: "Todo successfully deleted", deletedInfo });
+}
+
+module.exports = {
+  listUsers,
+  showUser,
+  validateUser,
+  createUser,
+  updateUser,
+  deleteUser,
+};

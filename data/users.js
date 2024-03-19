@@ -1,22 +1,18 @@
-
 let users = [
   {
     id: 1,
     name: "user01",
-    email: "user01@email.com"
-  }
+    email: "user01@email.com",
+  },
 ];
-
 
 const findAll = () => {
   return users;
 };
 
-
 const findById = (id) => {
   return users.find((user) => user.id === id);
 };
-
 
 const add = (name, email) => {
   const newId = users.length + 1;
@@ -24,14 +20,13 @@ const add = (name, email) => {
   const newUser = {
     id: newId,
     name,
-    email
+    email,
   };
 
   users.push(newUser);
   console.log("New user has been added");
   return newUser;
 };
-
 
 const updateById = (id, updateInfo) => {
   const found = users.findIndex((user) => user.id === parseInt(id));
@@ -47,17 +42,15 @@ const updateById = (id, updateInfo) => {
   }
 };
 
-
-
 // const updateInfo = {
 //     name: "Salvador Dali!",
 //   };
 
 const deleteById = (id) => {
-  const found = users.some((user) => user.id === id);
+  const found = users.findIndex((user) => user.id === id);
 
-  if (found) {
-    users.filter((user) => user.id === id);
+  if (found !== -1) {
+    users.splice(found, 1);
     console.log("user has been deleted");
     return users;
   } else {
@@ -65,7 +58,5 @@ const deleteById = (id) => {
     return users;
   }
 };
-
-// console.log(deleteById("envisioneer"));
 
 module.exports = { findAll, findById, add, updateById, deleteById, users };
